@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Members{% endblock %}
+{% block content %}
+<h2>Members</h2>
+
+<form method="POST" action="/add" class="mb-3 d-flex gap-2">
+    <input name="name" placeholder="Full Name" required>
+    <input name="contact" placeholder="Email/Phone" required>
+    <select name="status">
+        <option>Active</option>
+        <option>Inactive</option>
+        <option>Pending</option>
+    </select>
+    <input name="ministry" placeholder="Ministry">
+    <input name="join_date" type="date">
+    <button type="submit" class="btn btn-success">Add</button>
+</form>
+
+<table class="table table-striped">
+    <thead>
+        <tr><th>Name</th><th>Contact</th><th>Status</th><th>Ministry</th><th>Join Date</th></tr>
+    </thead>
+    <tbody>
+        {% for m in members %}
+        <tr>
+            <td>{{ m[1] }}</td>
+            <td>{{ m[2] }}</td>
+            <td>{{ m[3] }}</td>
+            <td>{{ m[4] }}</td>
+            <td>{{ m[5] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
